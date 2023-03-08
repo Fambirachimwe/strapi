@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Low"
+      ]
+    },
+    "weight": {
+      "type": "integer",
+      "max": 100,
+      "min": 0
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "Todo",
+        "Doing",
+        "Completed"
+      ],
+      "default": "Todo"
+    },
+    "creator": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "assigned_to": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "tasks"
+    },
+    "project": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::project.project"
+    },
+    "due_date": {
+      "type": "date"
+    }
+  }
+}
