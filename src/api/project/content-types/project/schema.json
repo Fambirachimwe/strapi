@@ -53,6 +53,9 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::task.task"
+    },
+    "client": {
+      "type": "string"
     }
   }
 }
